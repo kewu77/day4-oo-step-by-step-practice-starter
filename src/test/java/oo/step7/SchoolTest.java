@@ -56,6 +56,30 @@ public class SchoolTest {
         assertThat(systemOut()).contains("My name is Robert. I am 20 years old. I am a teacher. I teach Class 1.");
     }
 
+    @Test
+    public void should_print_message_when_startSchool_given_another_some_students_and_some_teachers(){
+        //Given
+        School school = new School();
+        Klass klass1 = new Klass(1);
+        Klass klass2 = new Klass(2);
+        Student jack = new Student(1, "jack", 18);
+        jack.joinSchool(school);
+        Teacher jerry = new Teacher(1, "Jerry", 21);
+        jerry.joinSchool(school);
+        jerry.assignTo(klass1);
+        Teacher robert = new Teacher(1, "Robert", 20);
+        robert.joinSchool(school);
+        robert.assignTo(klass1);
+        robert.assignTo(klass2);
+
+        //When
+        school.startSchool();
+        //Then
+        assertThat(systemOut()).contains("My name is Jerry. I am 21 years old. I am a teacher. I teach Class 1.");
+        assertThat(systemOut()).contains("My name is jack. I am 18 years old. I am a student.");
+        assertThat(systemOut()).contains("My name is Robert. I am 20 years old. I am a teacher. I teach Class 1, 2.");
+    }
+
     private String systemOut() {
         return outContent.toString();
     }
