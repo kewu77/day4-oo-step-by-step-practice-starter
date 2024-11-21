@@ -11,6 +11,10 @@ public class Student extends Person{
         ownKlass = klass;
     }
 
+    public void joinSchool(School school){
+        school.join(this);
+    }
+
     public boolean isIn(Klass klass){
         if(ownKlass == null || klass == null){
             return false;

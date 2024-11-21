@@ -28,6 +28,10 @@ public class Teacher extends Person{
         return belongsTo(student.getOwnKlass());
     }
 
+    public void joinSchool(School school){
+        school.join(this);
+    }
+
     private String getKlass(){
         return Arrays.stream(ownKlass.stream().
                 mapToInt(Klass::getId).toArray())
