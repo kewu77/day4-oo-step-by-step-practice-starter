@@ -11,6 +11,13 @@ public class Klass {
         this.id = id;
     }
 
+    public void assignLeader(Student student){
+        if(student.getOwnKlass() == null || student.getOwnKlass().getId() != id){
+            System.out.println("It is not one of us.");
+        }
+        leader = student;
+    }
+
     public boolean isLeader(Student student){
         if(leader == null)
             return false;
