@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class School {
-    public static final String SPACE = "\n";
+
     private List<Student> students;
 
     private List<Teacher> teachers;
@@ -24,7 +25,7 @@ public class School {
     }
 
     public void startSchool(){
-        System.out.println(students.stream().map(Student::introduce).collect(Collectors.joining(SPACE))
-         + teachers.stream().map(Teacher::introduce).collect(Collectors.joining(SPACE)));
+        System.out.println(students.stream().map(Student::introduce).collect(Collectors.joining(Common.SPACE))
+         + teachers.stream().map(Teacher::introduce).collect(Collectors.joining(Common.SPACE)));
     }
 }
