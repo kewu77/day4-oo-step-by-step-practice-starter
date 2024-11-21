@@ -1,5 +1,7 @@
 package oo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Klass {
@@ -7,8 +9,18 @@ public class Klass {
 
     private Student leader;
 
+    private List<Person> people;
+
+
     public Klass(int id) {
         this.id = id;
+        people = new ArrayList<>();
+    }
+
+    public void attach(Person person){
+        if(!people.contains(person)){
+            people.add(person);
+        }
     }
 
     public void assignLeader(Student student){
@@ -16,6 +28,7 @@ public class Klass {
             System.out.println("It is not one of us.");
         }
         leader = student;
+        people.forEach(this::printLeaderReport);
     }
 
     public boolean isLeader(Student student){
@@ -39,5 +52,16 @@ public class Klass {
 
     public int getId() {
         return id;
+    }
+
+    public void printLeaderReport(Person person){
+        if(person.getClass().equals(Student.class)){
+            Student student = (Student) person;
+            System.out.printf("I am %s, student of Class %d. I know %s become Leader.", student.getName(), id, leader.getName());
+        }else if(person.getClass().equals(Teacher.class)){
+            Teacher teacher = (Teacher) person;
+            System.out.printf("I am %s, teacher of Class %d. I know %s become Leader.", teacher.getName(), id, leader.getName());
+
+        }
     }
 }

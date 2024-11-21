@@ -15,7 +15,7 @@ public class Student extends Person{
         if(ownKlass == null || klass == null){
             return false;
         }
-        return this.ownKlass.equals(klass);
+        return ownKlass.equals(klass);
     }
 
     @Override
