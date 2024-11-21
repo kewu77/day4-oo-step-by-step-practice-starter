@@ -18,9 +18,7 @@ public class Klass {
     }
 
     public void attach(Person person){
-        if(!people.contains(person)){
-            people.add(person);
-        }
+        people.add(person);
     }
 
     public void assignLeader(Student student){
