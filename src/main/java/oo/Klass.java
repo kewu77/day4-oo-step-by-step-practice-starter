@@ -5,8 +5,16 @@ import java.util.Objects;
 public class Klass {
     private int id;
 
+    private Student leader;
+
     public Klass(int id) {
         this.id = id;
+    }
+
+    public boolean isLeader(Student student){
+        if(leader == null)
+            return false;
+        return leader.equals(student);
     }
 
     @Override
