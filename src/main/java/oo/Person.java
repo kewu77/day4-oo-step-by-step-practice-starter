@@ -9,7 +9,6 @@ public class Person {
 
     private int age;
 
-    protected Klass klass;
 
     public Person(int id, String name, int age) {
         this.id = id;
