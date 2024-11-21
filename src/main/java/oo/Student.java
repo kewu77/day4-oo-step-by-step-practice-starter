@@ -20,9 +20,14 @@ public class Student extends Person{
 
     @Override
     public String introduce() {
-        return ownKlass != null ?
-                super.introduce() + " I am a student." + String.format(" I am in class %d.", ownKlass.getId()) :
-                super.introduce() + " I am a student.";
+        if(ownKlass != null){
+            return ownKlass.isLeader(this) ?
+                    super.introduce() + " I am a student." + String.format(" I am the leader of class %d.", ownKlass.getId()) :
+                    super.introduce() + " I am a student." + String.format(" I am in class %d.", ownKlass.getId());
+        }else{
+            return super.introduce() + " I am a student.";
+        }
+
     }
 
     public Klass getOwnKlass() {
