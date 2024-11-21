@@ -14,14 +14,14 @@ public class Teacher extends Person{
     }
 
     public void assignTo(Klass klass){
-        this.ownKlass.add(klass);
+        ownKlass.add(klass);
     }
 
     public boolean belongsTo(Klass klass){
-        if(this.ownKlass == null || klass == null){
+        if(ownKlass == null || klass == null){
             return false;
         }
-        return this.ownKlass.contains(klass);
+        return ownKlass.contains(klass);
     }
 
     public boolean isTeaching(Student student){
@@ -37,6 +37,8 @@ public class Teacher extends Person{
 
     @Override
     public String introduce() {
-        return super.introduce() + " I am a teacher." + String.format(" I teach Class %s.",getKlass());
+        return ownKlass.size() != 0 ?
+                super.introduce() + " I am a teacher." + String.format(" I teach Class %s.",getKlass()) :
+                super.introduce() + " I am a teacher.";
     }
 }

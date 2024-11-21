@@ -8,11 +8,11 @@ public class Student extends Person{
     }
 
     public void join(Klass klass){
-        this.ownKlass = klass;
+        ownKlass = klass;
     }
 
     public boolean isIn(Klass klass){
-        if(this.ownKlass == null || klass == null){
+        if(ownKlass == null || klass == null){
             return false;
         }
         return this.ownKlass.equals(klass);
@@ -20,7 +20,9 @@ public class Student extends Person{
 
     @Override
     public String introduce() {
-        return super.introduce() + " I am a student." + String.format(" I am in class %d.",this.ownKlass.getId());
+        return ownKlass != null ?
+                super.introduce() + " I am a student." + String.format(" I am in class %d.", ownKlass.getId()) :
+                super.introduce() + " I am a student.";
     }
 
     public Klass getOwnKlass() {
